@@ -1,6 +1,8 @@
 const express=require("express")
 const User=require("../models/user")
 const jwt= require("jsonwebtoken")
+const dotenv=require('dotenv')
+dotenv.config()
 const {protect}=require("../middleware/authMiddleware")
 
 const router=express.Router()
@@ -56,6 +58,7 @@ router.post("/login",async (req,res)=>{
         
         let user=await User.findOne({email})
         if(!user) return res.send("user not exist")
+
         const ismatch=await user.matchPassword(password)    
         if(!ismatch)
             return res.status(400).json({message:"invalid credentials"})

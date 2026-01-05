@@ -22,6 +22,7 @@ import {Provider} from "react-redux"
 import store from '../redux/store'
 import ProtectedRoute from './components/Common/ProtectedRoute'
 import Product from './components/Products/Product'
+import WishList from './pages/WishList'
 
   
 
@@ -44,6 +45,7 @@ const App = () => {
      <Route path="orders/:id" element={<OrderDetails/>} />
      <Route path="my-orders" element={<MyOrders margin={100} />} />
      <Route path="/product/:id" element={<Product />}></Route>
+     <Route path="/mywishlist" element={<WishList/>}></Route>
       </Route>
       
       <Route path="/admin" element={<ProtectedRoute role="admin"><AdminLayout/></ProtectedRoute>}>

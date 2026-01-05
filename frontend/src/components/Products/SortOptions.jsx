@@ -3,11 +3,12 @@ import { useSearchParams } from 'react-router-dom'
 
 const SortOptions = () => {
   const [searchParams,setSearchParams]=useSearchParams()
-
+    
   const handleSortChange=(e)=>{
     const sortBy=e.target.value 
     searchParams.set("sortBy",sortBy)
     setSearchParams(searchParams)
+    
   }
   return (
     <div  className='flex items-center justify-center'>

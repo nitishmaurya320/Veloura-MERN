@@ -13,6 +13,7 @@ const adminRoutes=require("./routes/adminRoutes")
 const productAdminRoutes=require("./routes/productAdminRoutes")
 const adminOrderRoutes=require("./routes/adminOrderRoutes")
 const paymentRoutes=require("./routes/paymentRoutes")
+const wishlistRoutes=require("./routes/wishListRoutes")
 
 const app=express();
 app.use(express.json())
@@ -36,6 +37,7 @@ app.use("/api/orders",orderRoutes)
 app.use("/api/upload",uploadRoutes)
 app.use("/api",subscriberRoutes)
 app.use("/api/payment",paymentRoutes)
+app.use("/api/users/wishlist",wishlistRoutes)
 //admin routes
 app.use("/api/admin/users",adminRoutes)
 app.use("/api/admin/products",productAdminRoutes)
