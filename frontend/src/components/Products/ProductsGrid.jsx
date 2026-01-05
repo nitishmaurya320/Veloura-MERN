@@ -10,7 +10,7 @@ import { toast } from 'sonner';
     const ProductsGrid = ({products,loading,error}) => {
         const {user}=useSelector((state)=>state.auth)
         const navigate=useNavigate()
-        const [userId,setUserId]=useState(user._id);
+        const userId=user?._id;
         const [id,setId]=useState("");
         const [done,setDone]=useState(false);
         
