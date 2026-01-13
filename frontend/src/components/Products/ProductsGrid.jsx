@@ -29,7 +29,15 @@
             }
             
             try {
-                const res=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/wishlist/add`,{userId,productId});
+                let res;
+                if(alreadyInWishlist){
+                     res=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/wishlist/remove`,{userId,productId});
+
+                }
+                else{
+                     res=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/wishlist/add`,{userId,productId});
+                }
+                
             
             if(res.data.message==="Added"){
                 

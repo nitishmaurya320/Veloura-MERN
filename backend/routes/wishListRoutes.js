@@ -17,7 +17,7 @@
                
                  
                     if(user.products.some(id=>id.toString()===productId)){
-                        return res.status(409).json({message:"Product already added"})
+                        return res.status(200).json({message:"Product already added"})
                     }
                   
                         user.products.push(productId);
