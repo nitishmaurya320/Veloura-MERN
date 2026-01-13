@@ -11,21 +11,47 @@
                 if(!user){
                 user=new Wishlist({userId,products:[productId]})
                 await user.save();
-                return res.json({message:"Added"});
+                return res.status(200).json({message:"Added"})
+                
                 }
-                if(user.products.includes(productId)){
-                        user.products=user.products.filter(item=>item!=productId)
-                        res.json({message:"Removed"})
+               
+                 
+                    if(user.products.some(id=>id.toString()===productId)){
+                        return res.status(409).json({message:"Product already added"})
                     }
-                    else{
+                  
                         user.products.push(productId);
-                    }
-                    await user.save();
-                    res.status(200).json({message:"Added"})
+                        await user.save();
+                        res.status(200).json({message:"Added"})
+                   
+                        
+                    
+                
                 
             } catch (error) {
-                res.status(500).json({message:"Not Added",error})
+                res.status(500).json({message:"Not Added",error:error.message})
             }
+    })
+
+    router.post("/remove",async(req,res)=>{
+        const {userId,productId}=req.body;
+
+        let user=await Wishlist.findOne({userId});
+        try {
+            if(!user){
+            return res.status(404).json({message:"Nothing to remove"})
+            
+        }
+        
+            user.products=user.products.filter(id=>id.toString()!=productId)
+            await user.save();
+            res.status(200).json({message:"Removed"})
+        
+        
+        } catch (error) {
+            res.status(500).json({message:"Not Removed",error:error.message})
+        }
+        
     })
 
     // retrieve wishlist for a user
