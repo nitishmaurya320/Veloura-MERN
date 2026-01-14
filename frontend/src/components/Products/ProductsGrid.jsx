@@ -80,9 +80,9 @@
 
             },[userId])
         
-        if(loading){
-            return <p>Loading...</p>
-        }
+        // if(loading){
+        //     return <p>Loading...</p>
+        // }
 
         if(error){
             return <p>Error : {error}</p>
@@ -102,7 +102,7 @@
                             return(
                                 <div key={product._id} className='w-full md:h-[400px]  p-1 hover:shadow-lg cursor-pointer ' onClick={()=>{onProductClick(product._id)}}>
                                     <div className='relative'>
-                                        <img loading='lazy' className=' w-full h-[200px] md:h-[320px]  object-cover  object-top' src={product.images?.[0]?.url||"/placeholder.png"}/>
+                                        <img loading='lazy' className=' w-full h-[200px] md:h-[320px]  object-cover  object-top' src={product.images?.[0]?.url.replace("/upload/","/upload/f_auto,q_auto,w_600/")||"/placeholder.png"}/>
                                         <FaHeart onClick={(e)=>{
                                             e.stopPropagation();
 

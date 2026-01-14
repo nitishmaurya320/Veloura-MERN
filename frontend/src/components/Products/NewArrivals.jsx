@@ -59,7 +59,7 @@ const [scrollx,setScrollx] =useState(0);
               return (
               <div key={index} onClick={()=>{onProductClick(product._id)}}  className={`min-w-[100%] cursor-pointer md:min-w-[25%] h-full   relative rounded-lg`}> 
                 
-                  <img className='w-full h-full object-cover object-top rounded-lg' src={product.images[0].url} alt={product.images[0].altText}/>
+                  <img className='w-full h-full object-cover object-top rounded-lg' src={product?.images[0]?.url.replace("/upload/","/upload/f_auto,q_auto,w_600/")} alt={product.images[0].altText}/>
                   <div className='absolute bottom-0 w-full h-[60px] bg-opacity-50 backdrop-blur-md p-2 rounded-b-lg text-white'> 
                     <h4>{product.name}</h4>
                     <p > Rs {product.price}</p>
