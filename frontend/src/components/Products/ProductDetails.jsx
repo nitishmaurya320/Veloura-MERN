@@ -111,13 +111,13 @@ const ProductDetails = ({productId}) => {
                     {
                     selectedProduct.product.images.map((Product,index)=>{
                         return(
-                            <div className='box-border' key={index}><img className={`w-[80px] h-[80px] rounded-lg  box-content object-cover transition-all outline-2  ${index==currentProduct?" outline-gray-600   ":"outline-transparent"}`}  onClick={()=>{handlecurrentProduct(index)}} src={Product.url.replace("/upload/","/upload/f_auto,q_auto,w_300/")}/></div>
+                            <div className='box-border' key={index}><img className={`w-[80px] h-[80px] rounded-lg  box-content object-cover transition-all outline-2  ${index==currentProduct?" outline-gray-600   ":"outline-transparent"}`}  onClick={()=>{handlecurrentProduct(index)}} src={Product.url}/></div>
                         )
                     })
                 }
                 </div>
                 <div className='w-full flex  border-blue-600 h-[500px]  md:h-[500px]'>
-                        <img className='rounded-lg w-full h-full object-cover' src={selectedProduct.product.images[`${currentProduct}`]?.url.replace("/upload/","/upload/f_auto,q_auto,w_800/")} alt="Main product    "/>
+                        <img className='rounded-lg w-full h-full object-cover' src={selectedProduct.product.images[`${currentProduct}`]?.url} alt="Main product    "/>
                  </div>
 
             </div>
