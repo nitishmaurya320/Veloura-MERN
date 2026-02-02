@@ -10,6 +10,7 @@ const Orderconfirmation = () => {
   const navigate=useNavigate()
   const {orderDetails,loading,error}=useSelector((state)=>state.orders)
   const [showAnimation, setShowAnimation] = useState(true)
+  const [lottieLoaded, setLottieLoaded] = useState(false)
   const {orderId}=useParams();
   useEffect(()=>{
           dispatch(fetchOrderDetails(orderId))
@@ -28,7 +29,7 @@ const Orderconfirmation = () => {
   },[checkout,dispatch,navigate])
 
   useEffect(() => {
-    if (checkout && checkout._id) {
+    if (checkout && checkout._id&&lottieLoaded) {
       const timer = setTimeout(() => {
         setShowAnimation(false)
       }, 2000) // 2 seconds animation
@@ -41,6 +42,7 @@ const Orderconfirmation = () => {
       src="https://lottie.host/9b1ee2d6-a0a3-48a2-8f1f-7024e1f6952c/wE1SHm7mmo.lottie" className="w-[400px]  "
       loop={false}
       autoplay
+      onLoad={() => setLottieLoaded(true)}
     />
     </div>
   }
