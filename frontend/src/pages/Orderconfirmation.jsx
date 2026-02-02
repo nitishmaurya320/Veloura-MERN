@@ -29,26 +29,33 @@ const Orderconfirmation = () => {
   },[checkout,dispatch,navigate])
 
   useEffect(() => {
-    if (checkout && checkout._id&&lottieLoaded) {
+    if (checkout && checkout._id) {
       const timer = setTimeout(() => {
         setShowAnimation(false)
+        
       }, 2000) // 2 seconds animation
       return () => clearTimeout(timer)
     }
   }, [checkout])
-   if (loading||showAnimation) {
-    return  <div className='w-full fixed inset-0 z-50 bg-white h-screen flex justify-center  items-center'>
-      <DotLottieReact 
-      src="https://lottie.host/9b1ee2d6-a0a3-48a2-8f1f-7024e1f6952c/wE1SHm7mmo.lottie" className="w-[400px]  "
-      loop={false}
-      autoplay
-      onLoad={() => setLottieLoaded(true)}
-    />
-    </div>
-  }
 
-  return (
-    <div className='min-h-screen mt-[100px] p-3 md:p-10 '>
+
+  
+    return (
+    <div className=' relative min-h-screen flex-col justify-center items-center mt-[100px] p-3 md:p-10 '>
+      {(loading||showAnimation)&&
+      <div className="fixed inset-0 z-50 bg-white flex justify-center items-center">
+        <DotLottieReact
+          src="https://lottie.host/9b1ee2d6-a0a3-48a2-8f1f-7024e1f6952c/wE1SHm7mmo.lottie"
+          className="w-[400px]"
+          autoplay
+          loop={false}
+          
+        />
+      </div>}
+    
+  
+
+  {!loading&&(
       <div className="container w-full   md:w-[50%] mx-auto p-4 m-5 shadow-md ">
         <h1 className="text-2xl font-bold mb-4">Order Confirmation</h1>
         <p className="mb-2 text-green-500 text-2xl font-bold">Thank you for your order!</p>
@@ -83,8 +90,11 @@ const Orderconfirmation = () => {
         <p>₹ {checkout?.orderItems?.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
       </div>
       
+    )}
     </div>
   )
+    
+  
 }
 
 export default Orderconfirmation
