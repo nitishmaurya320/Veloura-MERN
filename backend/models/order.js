@@ -80,7 +80,12 @@ const orderSchema=new mongoose.Schema({
         type:String,
         enum:["Processing","Shipped","Delivered","Cancelled"],
         default:"Processing"
-    }
+    },
+    paymentDetails:{
+            type:mongoose.Schema.Types.Mixed,
+    
+        }
+    
 
 },
 {timestamps:true}

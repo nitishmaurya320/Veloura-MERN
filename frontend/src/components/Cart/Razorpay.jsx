@@ -22,12 +22,23 @@ export const Razorpay = ({ amount, onSuccess, onError }) => {
       description: "Order Payment",
       order_id: order.id,
       handler: async function (response) {
-        // This runs on payment success
-        onSuccess({
+        const verifyRes =await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/payment/verify-payment`,
+        {
+          razorpay_payment_id:response.razorpay_payment_id,
+          razorpay_order_id:response.razorpay_order_id,
+          razorpay_signature:response.razorpay_signature
+        }
+      )
+        if(verifyRes.data.success){
+            onSuccess({
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_order_id: response.razorpay_order_id,
           razorpay_signature: response.razorpay_signature,
-        });
+        }
+      );
+        }
+        
       },
       prefill: {
         email: localStorage.getItem("userEmail") || "",
@@ -53,7 +64,7 @@ export const Razorpay = ({ amount, onSuccess, onError }) => {
   };
 
   return (
-    <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={loadRazorpay}>
+    <button type="button" className="bg-blue-600 text-white px-4 py-2 rounded" onClick={loadRazorpay}>
       Pay ₹{amount}
     </button>
   );

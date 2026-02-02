@@ -52,6 +52,7 @@ router.put("/:id/pay",protect,async (req,res)=>{
                 checkout.isPaid="true",
                 checkout.paymentStatus=paymentStatus
                 checkout.paymentDetails=paymentDetails
+                
                 await checkout.save()
 
                 res.status(200).json(checkout)

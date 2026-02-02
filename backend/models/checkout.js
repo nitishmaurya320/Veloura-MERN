@@ -88,7 +88,8 @@ const checkoutSchema=new mongoose.Schema({
     finalizedAt:{
         type:Date,
 
-    },
+    }
+   
 
 
 },

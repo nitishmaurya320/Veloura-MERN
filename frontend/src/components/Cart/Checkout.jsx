@@ -16,6 +16,7 @@
         
         const {user}=useSelector((state)=>state.auth)
         const [checkoutId,setCheckoutId]= useState(null)
+        const [orderId,setOrderId]=useState("")
         const [shippingAddress,setShippingAddress]=useState({
             firstName:"",
             lastName:"",
@@ -68,7 +69,7 @@
                 await handleFinalizeCheckout(checkoutId)
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            
+                console.log(details)
             }
             
             catch (error) {
@@ -85,8 +86,8 @@
                         Authorization: `Bearer ${localStorage.getItem("userToken")}`
                     }
                 })
-            
-                    navigate("/order-confirmation")
+                    console.log(response)
+                    navigate(`/order-confirmation/${response.data._id}`)
                 
             } catch (error) {
                 console.log(error)
