@@ -36,7 +36,9 @@ const Login = () => {
 
      const handleSubmit=async (e)=>{
         e.preventDefault()
-     
+      if(!email||!password){
+        return toast.error("Please enter Email and Password",2000)
+      }
         dispatch(loginUser({email,password}))
        
     }

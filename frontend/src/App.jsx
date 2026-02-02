@@ -28,6 +28,7 @@ import WishList from './pages/WishList'
 
 
 const App = () => {
+  const [isPaymentDone,setIsPaymentDone]=useState(false)
     
   return (
     <Provider store={store}>
@@ -40,8 +41,8 @@ const App = () => {
      <Route path="signup" element={<Signup/>}/>
      <Route path="profile" element={<Profile/>}/>
      <Route path="collections/:collection" element={<CollectionPage />}/>
-     <Route path="checkout" element={<Checkout/>}/>
-     <Route path="order-confirmation/:orderId" element={<Orderconfirmation/>} />
+     <Route path="checkout" element={<Checkout setIsPaymentDone={setIsPaymentDone} isPaymentDone={isPaymentDone}/>}/>
+     <Route path="order-confirmation/:orderId" element={<Orderconfirmation isPaymentDone={isPaymentDone} setIsPaymentDone={setIsPaymentDone}/>} />
      <Route path="orders/:id" element={<OrderDetails/>} />
      <Route path="my-orders" element={<MyOrders margin={100} />} />
      <Route path="/product/:id" element={<Product />}></Route>

@@ -9,7 +9,7 @@
 
 
 
-    const Checkout = () => {
+    const Checkout = ({setIsPaymentDone,isPaymentDone}) => {
         const navigate=useNavigate()
         const dispatch=useDispatch()
         const {cart,loading,error}=useSelector((state)=>state.cart)
@@ -57,6 +57,7 @@
         }
         const handlePaymentSuccess= async (details)=>{
             try {
+                setIsPaymentDone(true)
                 const response=await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/pay`,
                 {  paymentStatus:"paid",paymentDetails:details}
                 ,{
@@ -65,8 +66,9 @@
                     }
                 }
             )
-        
+                
                 await handleFinalizeCheckout(checkoutId)
+                setIsPaymentDone(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 console.log(details)
@@ -81,12 +83,14 @@
 
         const handleFinalizeCheckout=async(checkoutId)=>{
             try {
+                
                 const response=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/finalize`,{},{
                     headers:{
                         Authorization: `Bearer ${localStorage.getItem("userToken")}`
                     }
                 })
                     console.log(response)
+                    
                     navigate(`/order-confirmation/${response.data._id}`)
                 
             } catch (error) {
@@ -107,6 +111,9 @@
         
     return (
         <div className='mt-[100px] h-full    '>
+            {isPaymentDone&&<div className='fixed inset-0 z-50 flex items-center justify-center bg-black'>
+                 <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-500"></div>
+            </div>}
             {/* {left} */}
             <div className='md:flex-row  flex-wrap  flex  justify-center md:gap-6   p-5 md:h-full  items-center'>
             <div className='md:w-[40%] w-full md:order-0 order-1  m-0 max-w-[500px] '>  

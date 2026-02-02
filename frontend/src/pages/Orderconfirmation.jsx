@@ -10,7 +10,7 @@ const Orderconfirmation = () => {
   const navigate=useNavigate()
   const {orderDetails,loading,error}=useSelector((state)=>state.orders)
   const [showAnimation, setShowAnimation] = useState(true)
-  const [lottieLoaded, setLottieLoaded] = useState(false)
+  
   const {orderId}=useParams();
   useEffect(()=>{
           dispatch(fetchOrderDetails(orderId))
@@ -18,7 +18,7 @@ const Orderconfirmation = () => {
 
       const checkout=orderDetails
   //clear the cart when order is confirmed
-      const he=true;
+    
   useEffect(()=>{
     if(checkout&&checkout._id){
       dispatch(clearCart())
@@ -87,7 +87,7 @@ const Orderconfirmation = () => {
         </ul>
 
         <h2 className="text-xl font-semibold mt-6 mb-4">Total Amount</h2>
-        <p>₹ {checkout?.orderItems?.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
+        <p>₹ {checkout?.orderItems?.reduce((total, item) => total + item?.price * item?.quantity, 0)}</p>
       </div>
       
     )}
