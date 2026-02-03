@@ -24,11 +24,11 @@ const Cartcontents = ({cart,userId,guestId}) => {
     <div>
       {
         cart.products.map((product,index)=>(
-            <div key={index} className='flex w-full  rounded   p-1 border-gray-400 border justify-between mb-2'>
+            <div key={index} className='flex w-full  rounded   px-1 border-gray-400 border justify-between mb-2'>
                 <div className='md:w-[70px] md:h-[70px] w-[50px] h-[50px] aspect-square border   shrink-0 flex justify-center items-center  '>
                     <img  className=' w-full h-full  object-cover object-top border  border-gray-200 rounded-md' src={product.image}/>
                 </div>
-                <div className='flex flex-col ml-4 md:text-[15px] text-[12px]  w-[60%]'>
+                <div className='flex flex-col ml-4 md:text-[15px] text-[13px]  w-[60%]'>
                 <h3 className='font-normal   truncate'>{product.name}</h3>
                 <span className=' text-gray-700'>Color -{product.color} | Size:-{product.size}</span>
 
