@@ -19,7 +19,7 @@ const ProductDetailsSkeleton = () => {
           </div>
 
           {/* MAIN IMAGE */}
-          <Skeleton className="w-full md:h-[500px] h-[300px] rounded-lg" />
+          <Skeleton className="w-full md:h-[500px] h-[500px] rounded-lg" />
         </div>
 
         {/* RIGHT DETAILS SECTION */}
