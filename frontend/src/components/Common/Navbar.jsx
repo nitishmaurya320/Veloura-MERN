@@ -72,6 +72,7 @@ const Navbar = () => {
           </Link>}  
           
             <Link to="/profile">
+
               <RiAccountCircleLine  className='md:text-2xl text-[21px] text-white'/>
             </Link>
             <Link to="/mywishlist">
@@ -96,7 +97,7 @@ const Navbar = () => {
                      <IoCloseSharp  className='cursor-pointer  text-2xl '/>
                  </button>
               </div>
-             <ul className=' space-x-6 text-[20px]  p-4' >
+             <ul className=' space-x-6 text-[20px]  p-5' >
             {
             menuItems.map((item,index)=>{
               return (
