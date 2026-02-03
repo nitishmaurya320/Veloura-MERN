@@ -105,30 +105,30 @@ const ProductDetails = ({productId}) => {
   return (
     <div className='max-w-screen mx-auto md:pt-2  md:p-8 '>
         {selectedProduct&&(
-            <div className='md:max-w-[80%]  w-[100%] mx-auto p-4      flex flex-col md:flex-row h-full'>
+            <div className='md:max-w-[80%] w-[100%] mx-auto  flex flex-col md:flex-row h-full'>
             <div className='flex-col-reverse flex  md:flex-row mx-auto  md:mx-0 md:w-[40%] ml-0 mr-0 w-full  md:space-y-4  md:gap-2 mt-5 md:mt-0'>
-                <div className='  flex flex-row md:flex-col mt-2 gap-2  md:mt-0 mr-0 mb-0'>
+                <div className='  flex flex-row md:flex-col mt-2 gap-2 pl-4  md:mt-0 mr-0 mb-0'>
                     {
                     selectedProduct.product.images.map((Product,index)=>{
                         return(
-                            <div className='box-border' key={index}><img className={`w-[80px] h-[80px] rounded-lg  box-content object-cover transition-all outline-2  ${index==currentProduct?" outline-gray-600   ":"outline-transparent"}`}  onClick={()=>{handlecurrentProduct(index)}} src={Product.url}/></div>
+                            <div className='box-border' key={index}><img className={`md:w-[80px] md:h-[80px] w-[70px] h-[70px] rounded-lg  box-content object-cover transition-all outline-2  ${index==currentProduct?" outline-gray-600   ":"outline-transparent"}`}  onClick={()=>{handlecurrentProduct(index)}} src={Product.url}/></div>
                         )
                     })
                 }
                 </div>
-                <div className='w-full flex  border-blue-600 h-[400px]  md:h-[500px]'>
+                <div className='w-full flex  border-blue-600 h-full  md:h-[500px]'>
                         <img className='md:rounded-lg w-full h-full object-cover' src={selectedProduct.product.images[`${currentProduct}`]?.url} alt="Main product    "/>
                  </div>
 
             </div>
-            <div className='  w-full md:w-[50%] flex mt-2 md:mt-0 md:ml-5 '>
+            <div className='  w-full md:w-[50%] flex mt-2 md:mt-0 md:ml-5 px-4 '>
                     
-                    <div>
-                        <div className='md:text-2xl text-[18px] font-semibold text-gray-600'>{selectedProduct.product.name}</div>
+                    <div className='md:text-[15px] text-[13px]'>
+                        <div className='md:text-[20px] text-[18px]  font-semibold text-gray-600'>{selectedProduct.product.name}</div>
                         <div className='line-through  font-semibold text-gray-500'>₹{selectedProduct.product.originalPrice&& selectedProduct.product.originalPrice}</div>
                         <p className='flex font-semibold  items-center text-2xl'>₹{selectedProduct.product.price}</p>
-                        <p className='md:text-[15px] text-[12px]'>{selectedProduct.product.description}</p>
-                        <div className='md:text-[15px] text-[12px]'>
+                        <p className=''>{selectedProduct.product.description}</p>
+                        <div className=''>
                         <span>Color:</span>
                         <div className='space-x-2'>
                             {
@@ -158,12 +158,14 @@ const ProductDetails = ({productId}) => {
                             <span>{quantity}</span>
                             <button onClick={()=>{setQuantity(quantity+1)}} className='border w-[25px]'>+</button>
                         </div>
-
-                        <button onClick={handleAddToCart} className={`w-[90%] h-[40px]  text-white bg-black rounded mt-4 ${isButtonDisabled?"bg-black-600 ":"bg-gray-800"}`}>{isButtonDisabled?"Add to Cart":"Adding..."}</button>
+                        <div className='flex justify-center'>
+                            <button onClick={handleAddToCart} className={`w-[90%] h-[40px]  text-white bg-black rounded mt-4 ${isButtonDisabled?"bg-black-600 ":"bg-gray-800"}`}>{isButtonDisabled?"Add to Cart":"Adding..."}</button>
+                        </div>
+                        
                         <div className='mt-3'>
                             <h3>Characteristics</h3>
                             <table className='w-full text-left'>
-                                <tbody className='md:text-[15px] text-[12px]'>
+                                <tbody >
                                     <tr>
                                     <td className='py-1'>Brand</td>
                                     <td className='py-1'>{selectedProduct.product.brand}</td>

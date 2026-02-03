@@ -106,8 +106,8 @@ import { FaHeart } from "react-icons/fa6";
                     products.map((product)=>{
                             return(
                                 <div key={product._id} className='w-full md:h-[400px]   p-1 hover:shadow-lg cursor-pointer ' onClick={()=>{onProductClick(product._id)}}>
-                                    <div className='relative flex items-center justify-center'>
-                                        <img loading='lazy' className=' w-[95%] h-[200px] md:h-[320px]  object-cover  object-top' src={product.images?.[0]?.url.replace("/upload/","/upload/f_auto,q_auto,w_600/")||"/placeholder.png"}/>
+                                    <div className='relative flex items-center justify-center '>
+                                        <img loading='lazy' className=' w-[95%] h-[200px] rounded-[5px] md:h-[320px]  object-cover object-contain  object-top' src={product.images?.[0]?.url.replace("/upload/","/upload/f_auto,q_auto,w_600/")||"/placeholder.png"}/>
                                         <div onClick={(e)=>{
                                             e.stopPropagation()
                                             handleWishList(userId,product._id)}} className='top-3  right-3  rounded-[5px] absolute py-1 px-1 bg-white/80 '>

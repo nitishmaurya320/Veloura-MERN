@@ -87,10 +87,10 @@ const Product = () => {
     }
          
           return (
-    <div className='mt-[100px]'>
+    <div className='md:mt-[100px] mt-[80px] w-full border-3 border-black'>
       <ProductDetails productId={id}/>
-        <h1 className='text-center text-2xl font-bold mb-5'>Similar Products</h1>
-      <div className='w-[90%] mx-auto'>
+        <h1 className='text-center md:text-2xl text-[18px] mt-4 font-bold mb-2 md:mb-5'>Similar Products</h1>
+      <div className='w-full mx-auto'>
         <ProductsGrid  products={similarProducts} loading={loading} error={error}/>
       </div>  
       
