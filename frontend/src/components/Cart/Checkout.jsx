@@ -117,57 +117,57 @@
                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-500"></div>
             </div>}
             {/* {left} */}
-            <div className='md:flex-row  flex-wrap  flex  justify-center md:gap-6   p-5 md:h-full  items-center'>
+            <div className='md:flex-row md:text-[15px] text-[12px]  flex-wrap  flex  justify-center md:gap-6   p-5 md:h-full  items-center'>
             <div className='md:w-[40%] w-full md:order-0 order-1  m-0 max-w-[500px] '>  
-                <h2 className='text-2xl font-bold'>CHECKOUT</h2>
-                <p className='text-[22px] font-bold'>Contact Details</p>
+                <h2 className='md:text-[19px] text-[16px] font-bold'>CHECKOUT</h2>
+                <p className='md:text-[17px] text-[14px] font-bold'>Contact Details</p>
                 <form onSubmit={handleCreateCheckout} className=''>
                 <div className='flex flex-col'>
-                    <label className='text-[18px] '>E-mail</label>
+                    <label >E-mail</label>
                     <input disabled value={user?user.email:""}  className='border p-1 border-gray-400 rounded-md h-[35px] outline-gray-400'></input>
                 </div>
                 <div>
-                    <h2 className='text-[22px] font-bold'>Delivery</h2>
+                    <h2 className='md:text-[17px] text-[14px] font-bold'>Delivery</h2>
                     <div className='flex justify-between mt-2 gap-2'>
                         <div className='flex-col flex'>
-                        <label  className='text-[18px] '>First Name</label>
+                        <label  >First Name</label>
                         <input value={shippingAddress.firstName} onChange={(e)=>setShippingAddress({...shippingAddress,firstName:e.target.value})} className='border border-gray-400 rounded-md h-[35px] outline-gray-400 w-full p-2'></input>
                         </div>
                     <div className='flex-col flex'>
-                        <label className='text-[18px] '>Last Name</label>
+                        <label >Last Name</label>
                         <input
                         value={shippingAddress.lastName} onChange={(e)=>setShippingAddress({...shippingAddress,lastName:e.target.value})}
                         className='border border-gray-400 rounded-md h-[35px] outline-gray-400 w-full p-2'></input>
                     </div>
                     </div>
                     <div className='flex flex-col mt-2'>
-                        <label className='text-[18px] '>Address</label>
+                        <label >Address</label>
                         <input
                         value={shippingAddress.address} onChange={(e)=>setShippingAddress({...shippingAddress,address:e.target.value})}
                         className='border border-gray-400 rounded-md h-[35px] outline-gray-400 p-2'></input>
                     </div>
                     <div className='flex justify-between mt-2 gap-2'>
                         <div className='flex-col flex'>
-                        <label className='text-[18px] '>City</label>
+                        <label >City</label>
                         <input
                         value={shippingAddress.city} onChange={(e)=>setShippingAddress({...shippingAddress,city:e.target.value})}
                         className='border border-gray-400 w-full rounded-md h-[35px] outline-gray-400 p-2'></input>
                         </div>
                     <div className='flex-col flex'>
-                        <label className='text-[18px] '>Postal code</label>
+                        <label >Postal code</label>
                         <input 
                         value={shippingAddress.postalCode} onChange={(e)=>setShippingAddress({...shippingAddress,postalCode:e.target.value})}
                         className='border border-gray-400 w-full rounded-md h-[35px] outline-gray-400 p-2'></input>
                     </div>
                     </div>
                     <div className='flex flex-col mt-2'>
-                        <label className='text-[18px] '>Country</label>
+                        <label >Country</label>
                         <input
                         value={shippingAddress.country} onChange={(e)=>setShippingAddress({...shippingAddress,country:e.target.value})}
                         className='border border-gray-400 rounded-md h-[35px] outline-gray-400 p-2'></input>
                     </div>
                     <div className='flex flex-col mt-2'>
-                        <label className='text-[18px]'>Phone</label>
+                        <label >Phone</label>
                         <input
                         value={shippingAddress.phone} onChange={(e)=>setShippingAddress({...shippingAddress,phone:e.target.value})}
                         className='border border-gray-400 rounded-md h-[35px] outline-gray-400 p-2'></input>
@@ -197,23 +197,23 @@
             </div>
             {/* {right}. */}
 
-            <div className='md:w-[40%] md:h-full w-full shadow-md mb-5  bg-gray-50 mt-5 md:mt-0   p-4'>
+            <div className='md:w-[40%] md:h-full md:text-[15px] text-[12px] w-full shadow-md mb-5  bg-gray-50 mt-5 md:mt-0   p-4'>
 
                 <div><h3 className='text-bold text-2xl mb-4'>Order Summary</h3></div>      
                     <div>
                         {
                             cart.products.map((item,index)=>{
                                 return(
-                                    <div key={index} className='flex  p-1 rounded bg-gray-100 shadow-md justify-between mb-2'>
+                                    <div key={index} className='flex  p-1 rounded bg-gray-200/40  justify-between mb-2'>
                     <div className='w-[10%] flex justify-center   items-center ml-2 '>
                         <img  className='object-cover rounded-md' src={item.image}/>
                     </div>
                     <div className='flex flex-col ml-4 w-[70%] '>
-                    <h3 className='font-normal text-[15px]'>{item.name}</h3>
-                    <span className='text-sm text-gray-700'>Brand -{item?.brand} | Size:-{item.size}</span>
+                    <h3 className='font-normal '>{item.name}</h3>
+                    <span className=' text-gray-700'>Brand -{item?.brand} | Size:-{item.size}</span>
                     </div>
                     <div className=' w-[20%] flex  flex-col items-end px-2'>
-                                        <p className='text-1xl'>₹{item.price}</p>
+                                        <p >₹{item.price}</p>
                                         
                                     </div>
                     </div>

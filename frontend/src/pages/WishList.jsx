@@ -21,8 +21,8 @@ const WishList = () => {
     console.log(myWishist)
   return (
     <>
-    <div className='mt-[100px] p-5'>
-    <div className='text-3xl'>My WishList </div>
+    <div className='mt-[100px] '>
+    <div className='md:text-3xl text-[18px] pl-2'>My WishList </div>
     <ProductsGrid products={myWishist}  />
     </div>
     

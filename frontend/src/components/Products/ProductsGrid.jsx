@@ -93,7 +93,7 @@ import { FaHeart } from "react-icons/fa6";
         
         const onProductClick=(id)=>{
             navigate(`/product/${id}`)
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0 });
         }
        
        if(loading){

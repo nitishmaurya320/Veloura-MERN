@@ -1,29 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import {  fetchProductsByFilter, setFilters } from '../../../redux/slices/productsSlice';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchProductsByFilter, setFilters } from "../../../redux/slices/productsSlice";
 
 const Searchbar = () => {
-    const [searchTerm,setSearchTerm]=useState("");
-    const dispatch=useDispatch()
-    const navigate=useNavigate()
-   
+  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const handleSearch=(e)=>{
-        e.preventDefault();
-        dispatch(setFilters({search:searchTerm}))
-        dispatch(fetchProductsByFilter({search:searchTerm}))
-        navigate(`/collections/all?search=${searchTerm}`)
-    }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) return;
+
+    dispatch(setFilters({ search: searchTerm }));
+    dispatch(fetchProductsByFilter({ search: searchTerm }));
+    navigate(`/collections/all?search=${searchTerm}`);
+  };
+
   return (
-     <div className='w-[400px] h-[40px]  md:flex hidden'>
-                <form className='flex w-full' onSubmit={handleSearch}>
-              <input type="text" placeholder='Search items' value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}} className='w-full  focus:border-black h-full rounded-l-[10px] px-2 bg-white outline-none border border-gray-400'></input>
-               <button type="submit"><IoIosSearch className='h-full text-2xl w-[40px] border-gray-400 border rounded-r-[10px] bg-yellow-400'/></button>
-            </form>
-            </div>
-  )
-}
+    <div className="hidden md:flex w-[420px]">
+      <form
+        onSubmit={handleSearch}
+        className="relative w-full"
+      >
+        <input
+          type="text"
+          placeholder="Search for products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="
+            w-full h-[42px]
+            rounded-full
+            pl-4 pr-12
+            bg-white
+            border border-gray-300
+            outline-none
+            text-sm
+            focus:border-black
+            focus:ring-1 focus:ring-black
+            transition
+          "
+        />
 
-export default Searchbar
+        <button
+          type="submit"
+          className="
+            absolute right-1 top-1/2 -translate-y-1/2
+            w-[36px] h-[36px]
+            rounded-full
+            bg-yellow-400
+            flex items-center justify-center
+            hover:bg-yellow-500
+            transition
+          "
+        >
+          <IoIosSearch className="text-xl text-black" />
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Searchbar;

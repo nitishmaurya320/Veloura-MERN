@@ -112,37 +112,37 @@ const FilterSidebar = () => {
   
 
   return (
-    <div className='w-full h-[1080px] md:h-[1150px]  p-2 md:p-5'>
+    <div className='w-full h-[1080px] md:h-[1150px] text-[12px] md:text-[14px]  p-2 md:p-5'>
       <div>
-        <label className='text-[20px] font-semibold'>Category</label>
+        <label className='text-[14px] md:text-[16px] font-semibold'>Category</label>
         {
           categories.map((category)=>{
             return(
-              <div key={category}>
+              <div  key={category}>
                 <input checked={filter.category===category} type="radio" name="category" value={category} onChange={handleFilterChange}></input>
-                 <span>{category}</span>
+                 <span className="ml-2">{category}</span>
               </div>
 
             )
           })
         }
       </div>
-       <div>
-        <label className='text-[20px] font-semibold mt-5'>Gender</label>
+       <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] font-semibold' >Gender</label>
         {
           gender.map((gender)=>{
             return(
               <div key={gender}>
                 <input type="radio" checked={filter.gender===gender} value={gender} onChange={handleFilterChange} name="gender"></input>
-                 <span>{gender}</span>
+                 <span className="ml-2">{gender}</span>
               </div>
 
             )
           })
         }
       </div>
-       <div>
-        <label className='text-[20px] font-semibold mt-5'>Color</label>
+       <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] font-semibold '>Color</label>
         <div className='grid grid-cols-4 gap-3' > 
         {
           colors.map((color)=>{
@@ -154,8 +154,8 @@ const FilterSidebar = () => {
         }
         </div>
       </div>
-      <div>
-        <label className='text-[20px] font-semibold mt-5'>Size</label>
+      <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] font-semibold'>Size</label>
         {
           sizes.map((size)=>{
             return(
@@ -169,8 +169,8 @@ const FilterSidebar = () => {
           })
         }
       </div>
-       <div>
-        <label className='text-[20px] font-semibold mt-5'>Material</label>
+       <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] font-semibold '>Material</label>
         {
           materials.map((material)=>{
             return(
@@ -183,8 +183,8 @@ const FilterSidebar = () => {
           })
         }
       </div>
-       <div>
-        <label className='text-[20px] font-semibold mt-5'>Brand</label>
+       <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] font-semibold '>Brand</label>
         {
           brands.map((brand)=>{
             return(
@@ -198,8 +198,8 @@ const FilterSidebar = () => {
           })
         }
       </div>
-       <div>
-        <label className='text-[20px] flex flex-col font-semibold mt-5'>Price</label>
+       <div className='mt-3'>
+        <label className='text-[14px] md:text-[16px] flex flex-col font-semibold '>Price</label>
         
          
               
