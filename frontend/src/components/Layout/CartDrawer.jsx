@@ -11,7 +11,7 @@ const CartDrawer = ({isopen,setCartDrawer}) => {
   const {user,guestId}=useSelector((state)=>state.auth)
   const {cart}= useSelector((state)=>state.cart)
   const userId=user?user._id:null;
-
+    
     const handleCheckout=()=>{
       if(!user){
         navigate("/login?redirect=checkout")
@@ -36,7 +36,7 @@ const CartDrawer = ({isopen,setCartDrawer}) => {
     </div>
     <div className="flex-grow p-4 overflow-y-auto"> 
       <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
-      {cart&&cart?.products?.length>0?(<Cartcontents cart={cart} userId={userId} guesId={guestId}/>):(<p>Your cart is empty</p>)}
+      {cart&&cart?.products?.length>0?(<Cartcontents cart={cart} userId={userId} guestId={guestId}/>):(<p>Your cart is empty</p>)}
       
 
     </div>

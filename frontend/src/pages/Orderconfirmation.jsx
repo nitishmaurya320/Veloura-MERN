@@ -88,9 +88,23 @@ const Orderconfirmation = () => {
 
         <h2 className="text-xl font-semibold mt-6 mb-4">Total Amount</h2>
         <p>₹ {checkout?.orderItems?.reduce((total, item) => total + item?.price * item?.quantity, 0)}</p>
+        <button
+  onClick={() =>
+    window.open(
+      `${import.meta.env.VITE_BACKEND_URL}/api/invoice/${orderId}`,
+      "_blank"
+    )
+  }
+  className="bg-black text-white px-3 mt-2 py-2 rounded"
+>
+  Download Invoice
+</button>
       </div>
       
+      
     )}
+    
+
     </div>
   )
     

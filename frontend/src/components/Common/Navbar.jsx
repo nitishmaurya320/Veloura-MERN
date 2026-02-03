@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { RiAccountCircleLine } from "react-icons/ri";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { HiMiniBars3 } from "react-icons/hi2";
+import { FiHeart } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
 
 import Searchbar from './Searchbar';
@@ -47,7 +48,7 @@ const Navbar = () => {
               return (
                
                   <Link to={item.path}   className='hover:text-blue-800' key={index}    >
-                  <li  className='text-white menu text-2xl hover:text-yellow-200'>
+                  <li onClick={()=>{window.scrollTo({ top: 0 });}}  className='text-white menu text-2xl hover:text-yellow-200'>
                     {item.name}
                   </li>
                   </Link>
@@ -69,6 +70,9 @@ const Navbar = () => {
           
             <Link to="/profile">
               <RiAccountCircleLine  className='text-2xl text-white'/>
+            </Link>
+            <Link to="/mywishlist">
+              <FiHeart   className='text-2xl text-white '/>
             </Link>
             <button onClick={()=>setCartDrawer(true)} >
               <HiOutlineShoppingBag className='text-2xl text-white' />
@@ -92,7 +96,7 @@ const Navbar = () => {
             menuItems.map((item,index)=>{
               return (
                
-                  <Link to={item.path} className='hover:text-blue-800' key={index}    >
+                  <Link to={item.path} className='hover:text-blue-800 text-[15px]' key={index}    >
                   <li>
                     {item.name}
                   </li>

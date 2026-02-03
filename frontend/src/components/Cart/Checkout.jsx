@@ -57,7 +57,7 @@
         }
         const handlePaymentSuccess= async (details)=>{
             try {
-                setIsPaymentDone(true)
+                
                 const response=await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/pay`,
                 {  paymentStatus:"paid",paymentDetails:details}
                 ,{
@@ -68,14 +68,15 @@
             )
                 
                 await handleFinalizeCheckout(checkoutId)
-                setIsPaymentDone(false);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                window.scrollTo({ top: 0 });
 
                 console.log(details)
             }
             
             catch (error) {
                 console.log(error)
+                setIsPaymentDone(false)
             }
         
 
@@ -90,11 +91,12 @@
                     }
                 })
                     console.log(response)
-                    
+                    setIsPaymentDone(false)
                     navigate(`/order-confirmation/${response.data._id}`)
                 
             } catch (error) {
                 console.log(error)
+                setIsPaymentDone(false)
                 
             }
 
@@ -179,7 +181,10 @@
                         ):(
                             <div>
                             <h1 className='text-xl font-semibold mb-2'>Continue with Razorpay</h1>
-                            <Razorpay amount={cart.totalPrice}  onSuccess={handlePaymentSuccess} onError={(err)=>alert("Payment failed")}/> 
+                            <Razorpay  onPayClick={() => setIsPaymentDone(true)}    amount={cart.totalPrice}  onSuccess={handlePaymentSuccess}
+                             onError={(err)=>{alert("Payment failed")
+                                setIsPaymentDone(false)}
+                             }/> 
                             </div>   
                         )}
                     

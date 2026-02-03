@@ -44,6 +44,7 @@ export const addToCart = createAsyncThunk("cart/addToCart", async ({productId, q
             userId,
             guestId
         });
+        console.log("1")
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response.data);
@@ -62,6 +63,7 @@ export const updateCartItemQuantity = createAsyncThunk("cart/updateCartItemQuant
             userId,
             guestId
         });
+        
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response.data);

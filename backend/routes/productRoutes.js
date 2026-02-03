@@ -303,7 +303,7 @@ const router=express.Router()
             gender:product.gender,
             category:product.category,
 
-        }).limit(4)
+        }).limit(5)
 
         res.json(similarProducts)
     }

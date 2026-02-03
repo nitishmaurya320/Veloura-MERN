@@ -116,18 +116,19 @@ const ProductDetails = ({productId}) => {
                     })
                 }
                 </div>
-                <div className='w-full flex  border-blue-600 h-[500px]  md:h-[500px]'>
-                        <img className='rounded-lg w-full h-full object-cover' src={selectedProduct.product.images[`${currentProduct}`]?.url} alt="Main product    "/>
+                <div className='w-full flex  border-blue-600 h-[400px]  md:h-[500px]'>
+                        <img className='md:rounded-lg w-full h-full object-cover' src={selectedProduct.product.images[`${currentProduct}`]?.url} alt="Main product    "/>
                  </div>
 
             </div>
             <div className='  w-full md:w-[50%] flex mt-2 md:mt-0 md:ml-5 '>
                     
                     <div>
-                        <div className='text-2xl font-semibold text-gray-600'>{selectedProduct.product.name}</div>
+                        <div className='md:text-2xl text-[18px] font-semibold text-gray-600'>{selectedProduct.product.name}</div>
                         <div className='line-through  font-semibold text-gray-500'>₹{selectedProduct.product.originalPrice&& selectedProduct.product.originalPrice}</div>
                         <p className='flex font-semibold  items-center text-2xl'>₹{selectedProduct.product.price}</p>
-                        <p>{selectedProduct.product.description}</p>
+                        <p className='md:text-[15px] text-[12px]'>{selectedProduct.product.description}</p>
+                        <div className='md:text-[15px] text-[12px]'>
                         <span>Color:</span>
                         <div className='space-x-2'>
                             {
@@ -150,17 +151,19 @@ const ProductDetails = ({productId}) => {
                                 })
                             }
                         </div>
+                        
                         <span>Quantitiy:</span>
                         <div className='space-x-3'>
                             <button onClick={()=>{setQuantity(quantity>1?quantity-1:quantity)}} className='border w-[25px]'>-</button>
                             <span>{quantity}</span>
                             <button onClick={()=>{setQuantity(quantity+1)}} className='border w-[25px]'>+</button>
                         </div>
+
                         <button onClick={handleAddToCart} className={`w-[90%] h-[40px]  text-white bg-black rounded mt-4 ${isButtonDisabled?"bg-black-600 ":"bg-gray-800"}`}>{isButtonDisabled?"Add to Cart":"Adding..."}</button>
                         <div className='mt-3'>
                             <h3>Characteristics</h3>
                             <table className='w-full text-left'>
-                                <tbody>
+                                <tbody className='md:text-[15px] text-[12px]'>
                                     <tr>
                                     <td className='py-1'>Brand</td>
                                     <td className='py-1'>{selectedProduct.product.brand}</td>
@@ -172,6 +175,7 @@ const ProductDetails = ({productId}) => {
                                 </tbody>
                             </table>
 
+                        </div>
                         </div>
                     </div>
             </div>

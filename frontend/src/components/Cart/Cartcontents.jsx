@@ -6,12 +6,14 @@ import { removeFromCart, updateCartItemQuantity } from '../../../redux/slices/ca
 
 const Cartcontents = ({cart,userId,guestId}) => {
    const dispatch=useDispatch()
-
+  console.log(guestId)
    //handle adding and subtracting to cart
    const handleAddToCart=(productId,delta,quantity,size,color)=>{
     const newQuantity=quantity+delta;
     if(newQuantity>=1){
+      console.log(productId,newQuantity,guestId,size,color)
       dispatch(updateCartItemQuantity({productId,quantity:newQuantity,guestId,userId,size,color}))
+      
     }
    }
 

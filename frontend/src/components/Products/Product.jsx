@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ProductDetails from './ProductDetails'
 import ProductsGrid from './ProductsGrid'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,8 +14,12 @@ const Product = () => {
   const userId=user?._id;
   const [reviews,setReviews]=useState([])
   const [isEditing,setIsEditing]=useState(false)
+  const footerTriggerRef = useRef(null);
+
     const dispatch=useDispatch()
         const {similarProducts,loading,error}=useSelector((state)=>state.products)
+       
+
 
          useEffect(()=>{
                 dispatch(fetchSimilarProducts(id))
@@ -89,6 +93,7 @@ const Product = () => {
       <div className='w-[90%] mx-auto'>
         <ProductsGrid  products={similarProducts} loading={loading} error={error}/>
       </div>  
+      
 
       <div className='w-[90%] mx-auto'>
         <Reviews setIsEditing={setIsEditing} isEditing={isEditing} handleDelete={handleDelete} handleSubmitOrEdit={handleSubmitOrEdit} reviews={reviews} userId={userId} productId={id}/>

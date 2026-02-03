@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export const Razorpay = ({ amount, onSuccess, onError }) => {
+export const Razorpay = ({ amount, onSuccess, onError,onPayClick }) => {
   const loadRazorpay = async () => {
     const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
 
@@ -13,7 +13,7 @@ export const Razorpay = ({ amount, onSuccess, onError }) => {
     const { data: order } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/payment/create-order`, {
       amount
     });
-
+    if (onPayClick) onPayClick();
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: order.amount,
@@ -47,6 +47,12 @@ export const Razorpay = ({ amount, onSuccess, onError }) => {
       theme: {
         color: "#3399cc",
       },
+      modal: {
+      ondismiss: () => {
+    console.log("❌ Payment popup closed by user");
+    onError?.("USER_CLOSED");
+  }
+},
     };
 
     const rzp = new window.Razorpay(options);
