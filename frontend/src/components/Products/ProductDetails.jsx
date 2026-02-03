@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { fetchProductDetails } from '../../../redux/slices/productsSlice';
 import { addToCart } from '../../../redux/slices/cartSlice';
 import { useParams } from 'react-router-dom';
+import ProductDetailsSkeleton from '../../Skeletons/ProductDetailsSkeleton';
 
 const ProductDetails = ({productId}) => {
 
@@ -61,12 +62,7 @@ const ProductDetails = ({productId}) => {
         setIsButtonDisabled(true)
        })
 
-       if(loading){
-        return <p>Loading...</p>
-       }
-       if(error){
-        return <p>Error :{error}</p>
-       }
+       
         
         console.log(isButtonDisabled)
     }
@@ -76,6 +72,12 @@ const ProductDetails = ({productId}) => {
                 dispatch(fetchProductDetails(productFetchId))
             
         },[dispatch,productFetchId])
+        if(loading){
+        return <ProductDetailsSkeleton/>
+       }
+       if(error){
+        return <p>Error :{error}</p>
+       }
 
        
 
