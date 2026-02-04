@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import UserLayout from './components/Layout/UserLayout'
 import Home from './pages/Home'
@@ -28,6 +28,11 @@ import WishList from './pages/WishList'
 
 
 const App = () => {
+  useEffect(()=>{
+    fetch("http://localhost:8000/set-cookie", { credentials: "include" })
+  .then(res => res.json())
+  .then(console.log);
+  },[])
   const [isPaymentDone,setIsPaymentDone]=useState(false)
     
   return (

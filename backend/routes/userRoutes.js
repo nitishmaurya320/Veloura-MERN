@@ -69,9 +69,17 @@ router.post("/login",async (req,res)=>{
                 process.env.JWT_SECRET,
                 {expiresIn:"40h"},
                 (err,token)=>{
-                    if(err) throw err;      
-                    res.status(201).json({user,
-                        token
+                    if(err) throw err; 
+                       res.cookie("access_token", token, {
+                            httpOnly: true,
+                            // secure: process.env.NODE_ENV === "production",
+                            secure:false,
+                            sameSite: "lax",
+                            maxAge: 40 * 60 * 60 * 1000, // 40h
+                            });  
+                            
+                    res.status(201).json({user
+                        
                     })
                 })
 

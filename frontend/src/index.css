@@ -7,13 +7,11 @@
 
 .userlayout{
    font-family: "Inter", sans-serif;
-  
+  width:100vw;
+      border:2px solid red;
    
 }
-.body{
-   width:100%;
-   border:2px solid red;
-}
+
 
 .menu{
      font-family: "Pacifico", cursive;

@@ -19,6 +19,7 @@ const invoiceRoutes=require("./routes/invoiceRoutes")
 
 const app=express();
 const rateLimit = require("express-rate-limit");
+const cookieParser = require("cookie-parser");
 
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
@@ -26,8 +27,16 @@ const aiLimiter = rateLimit({
   message: "Too many AI requests, please try later."
 });
 
+
+app.use(cors({
+  origin: "http://localhost:5173", // your frontend URL
+  credentials: true
+}));
+
 app.use(express.json())
-app.use(cors())
+
+app.use(cookieParser());
+
 
 dotenv.config();
 
@@ -56,7 +65,10 @@ app.use("/api/ai", aiLimiter);
 app.use("/api/admin/users",adminRoutes)
 app.use("/api/admin/products",productAdminRoutes)
 app.use("/api/admin/orders",adminOrderRoutes)
-
+app.get("/set-cookie", (req, res) => {
+    res.cookie("test", "123", { httpOnly: true, sameSite: "lax", secure: false });
+    res.json({ message: "cookie set" });
+});
 
 
 app.listen(PORT,()=>{
