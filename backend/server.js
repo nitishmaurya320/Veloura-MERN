@@ -18,6 +18,14 @@ const ReviewRoutes=require("./routes/reviewRoutes")
 const invoiceRoutes=require("./routes/invoiceRoutes")
 
 const app=express();
+const rateLimit = require("express-rate-limit");
+
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 5,             // max 5 AI calls per minute per IP
+  message: "Too many AI requests, please try later."
+});
+
 app.use(express.json())
 app.use(cors())
 
@@ -42,6 +50,8 @@ app.use("/api",subscriberRoutes)
 app.use("/api/payment",paymentRoutes)
 app.use("/api/users/wishlist",wishlistRoutes)
 app.use("/api/product",ReviewRoutes)
+app.use("/api/ai", aiLimiter);
+
 //admin routes
 app.use("/api/admin/users",adminRoutes)
 app.use("/api/admin/products",productAdminRoutes)
