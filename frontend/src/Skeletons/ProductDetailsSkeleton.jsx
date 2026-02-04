@@ -2,7 +2,7 @@ import { Skeleton } from "../components/ui/skeleton"
 
 const ProductDetailsSkeleton = () => {
   return (
-    <div className="max-w-screen mx-auto md:pt-2 md:p-8">
+    <div className="w-full mx-auto md:pt-2 md:p-8">
       <div className="md:max-w-[80%] w-full mx-auto flex flex-col md:flex-row">
 
         {/* LEFT IMAGE SECTION */}

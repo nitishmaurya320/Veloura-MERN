@@ -61,7 +61,7 @@ const CollectionPage = ({id,setId}) => {
         <div className={`fixed h-full w-[50%]  md:hidden overflow-y-scroll  border-green-400 bg-white  top-[80px] duration-100 z-3 ${showFilterBar?"translate-x-0":"-translate-x-full"}`}>
             <FilterSidebar/>
         </div>
-        <div className={` fixed overlay w-screen h-screen top-0  border-yellow-300 bg-gray-500 opacity-23 z-2 ${showFilterBar?"block":"hidden"} `} onClick={handleFilterBar}>
+        <div className={` fixed overlay w-full h-screen top-0  border-yellow-300 bg-gray-500 opacity-23 z-2 ${showFilterBar?"block":"hidden"} `} onClick={handleFilterBar}>
 
         </div>
         {/* {desktop filter} */}    

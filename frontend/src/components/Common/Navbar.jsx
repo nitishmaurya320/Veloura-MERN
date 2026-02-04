@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <>
     {/* <div className="fixed border  w-screen h-screen z-1000 bg-gray-800 opacity-90 text-5xl" >hello</div> */}
-    <div className='fixed shadow-md  top-0 z-1000 max-w-screen container md:h-[100px] h-[80px]   flex justify-between items-center bg-[#11233b] px-3 md:px-5'>
+    <div className='fixed shadow-md  top-0 z-1000 w-full container md:h-[100px] h-[80px]   flex justify-between items-center bg-[#11233b] px-3 md:px-5'>
       <HiMiniBars3 className='md:text-2xl text-[20px] text-white  md:hidden ml-1 ' onClick={handleMenubar}/>
       <div className='w-[150px]  h-[40%] mx-5  md:w-[250px] md:h-[60%] '>
             <Link to="/" >

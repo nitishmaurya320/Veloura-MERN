@@ -105,7 +105,7 @@ const ProductDetails = ({productId}) => {
     // ]
     
   return (
-    <div className='max-w-screen mx-auto md:pt-2  md:p-8 '>
+    <div className='w-full mx-auto md:pt-2  md:p-8 '>
         {selectedProduct&&(
             <div className='md:max-w-[80%] w-[100%] mx-auto  flex flex-col md:flex-row h-full'>
             <div className='flex-col-reverse flex  md:flex-row mx-auto  md:mx-0 md:w-[40%] ml-0 mr-0 w-full  md:space-y-4  md:gap-2 mt-5 md:mt-0'>

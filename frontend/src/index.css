@@ -7,8 +7,12 @@
 
 .userlayout{
    font-family: "Inter", sans-serif;
-   border:2px solid red;
+  
+   
+}
+.body{
    width:100%;
+   border:2px solid red;
 }
 
 .menu{
