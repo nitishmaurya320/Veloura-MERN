@@ -85,8 +85,8 @@ router.post("/register",async (req,res)=>{
                          res.cookie("access_token", token, {
                             httpOnly: true,
                             // secure: process.env.NODE_ENV === "production",
-                            secure:false,
-                            sameSite: "lax",
+                            secure:true,
+                            sameSite: "none",
                             maxAge: 40 * 60 * 60 * 1000, // 40h
                             });  
                             
@@ -133,8 +133,8 @@ router.post("/login",async (req,res)=>{
                        res.cookie("access_token", token, {
                             httpOnly: true,
                             // secure: process.env.NODE_ENV === "production",
-                            secure:false,
-                            sameSite: "lax",
+                            secure:true,
+                            sameSite: "none",
                             maxAge: 40 * 60 * 60 * 1000, // 40h
                             });  
                             
