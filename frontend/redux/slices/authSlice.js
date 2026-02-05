@@ -47,12 +47,29 @@
     export const registerUser=createAsyncThunk("auth/registerUser",async (userData,{rejectWithValue})=>{
         try{
         const response=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/register`,userData)
-        localStorage.setItem("userInfo",JSON.stringify(response.data.user))
         
+       
        
         
 
-        return  response.data.user;
+        return  response.data;
+        }
+
+        catch(err){
+            
+            return rejectWithValue(err.response.data)
+            
+        }
+    })
+     export const verifyUser=createAsyncThunk("auth/verifyUser",async (userData,{rejectWithValue})=>{
+        try{
+        const response=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/verify-otp`,userData,{ withCredentials: true })
+        
+        
+             localStorage.setItem("userInfo",JSON.stringify(response.data.user))
+            console.log(response.data)
+
+        return  response.data;
         }
 
         catch(err){
@@ -100,10 +117,23 @@
             })
             .addCase(registerUser.fulfilled,(state,action)=>{
                 state.loading=false
-                state.user=action.payload
+                // state.user=action.payload
                 state.error=null
             })
             .addCase(registerUser.rejected,(state,action)=>{
+                state.loading=false
+                state.error=action.payload.message
+            })
+            .addCase(verifyUser.pending,(state)=>{
+                state.loading=true
+                state.error=null
+            })
+            .addCase(verifyUser.fulfilled,(state,action)=>{
+                state.loading=false
+                state.user=action.payload.user
+                state.error=null
+            })
+            .addCase(verifyUser.rejected,(state,action)=>{
                 state.loading=false
                 state.error=action.payload.message
             })

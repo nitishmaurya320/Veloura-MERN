@@ -8,8 +8,8 @@ const ProductGridSkeleton = ({ count = 20 }) => {
           key={i}
           className="w-full md:h-[400px] p-1"
         >
-          <div className="relative flex items-center justify-center">
-            <Skeleton className="w-[95%] h-[200px] md:h-[320px] rounded-none" />
+          <div className="relative  flex items-center justify-center">
+            <Skeleton className="w-full h-[200px] md:h-[320px] rounded-[5px]" />
           </div>
 
           {/* optional spacing to match layout */}

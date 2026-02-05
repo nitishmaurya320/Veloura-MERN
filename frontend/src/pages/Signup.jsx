@@ -16,24 +16,9 @@ const Signup = () => {
         const navigate=useNavigate()
         const location=useLocation()
         const {user,guestId,loading}=useSelector((state)=>state.auth)
-         const {cart}=useSelector((state)=>state.cart)
+        const redirect = new URLSearchParams(location.search).get("redirect") || "/"
     
-         //get redirect parameter and check if its checkout or something 
-    
-         const redirect=new URLSearchParams(location.search).get("redirect")||"/"
-         const isCheckoutRedirect=redirect.includes("checkout")
-    
-         useEffect(()=>{
-          if(user){
-            if(cart?.products.length>0&&guestId){
-              dispatch(mergeCart({guestId,user})).then(()=>{
-                navigate(isCheckoutRedirect?"/checkout":"/")
-              })
-            }else{
-               navigate(isCheckoutRedirect?"/checkout":"/")
-            }
-          }
-         },[user,guestId,cart,navigate,isCheckoutRedirect,dispatch])
+         
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -42,7 +27,10 @@ const Signup = () => {
           state.loading=false
           
         }
+        
+
         dispatch(registerUser({name,email,password}))
+        navigate(`/verify-otp?identifier=${encodeURIComponent(email)}`)
         
 
     }

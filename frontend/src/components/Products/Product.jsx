@@ -79,24 +79,22 @@ const Product = () => {
     //delete a comment
     const handleDelete=async(productId)=>{
       const res=await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/product/review/delete/${productId}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("userToken")}`
-                }
+               withCredentials:true
             })
             handleFetchReviews(id)
     }
          
           return (
-    <div className='md:mt-[100px] mt-[80px] w-full border-3 border-black'>
+    <div className='md:mt-[120px] mt-[80px] w-full '>
       <ProductDetails productId={id}/>
         <h1 className='text-center md:text-2xl text-[18px] mt-4 font-bold mb-2 md:mb-5'>Similar Products</h1>
-      <div className='w-full mx-auto'>
-        <ProductsGrid  products={similarProducts} loading={loading} error={error}/>
+      <div className='w-full px-2 md:px-20 flex justify-center items-center mx-auto  '>
+        <ProductsGrid cols={4} products={similarProducts} loading={loading} error={error}/>
       </div>  
       
 
       <div className='w-[90%] mx-auto'>
-        <Reviews setIsEditing={setIsEditing} isEditing={isEditing} handleDelete={handleDelete} handleSubmitOrEdit={handleSubmitOrEdit} reviews={reviews} userId={userId} productId={id}/>
+        <Reviews  setIsEditing={setIsEditing} isEditing={isEditing} handleDelete={handleDelete} handleSubmitOrEdit={handleSubmitOrEdit} reviews={reviews} userId={userId} productId={id}/>
       </div>
     </div>
   )

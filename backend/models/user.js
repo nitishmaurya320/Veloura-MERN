@@ -24,7 +24,11 @@ const userSchema=new mongoose.Schema(
             type:String,
             enum:["customer","admin"],
             default:"customer"
-        }
+        },
+        isVerified: {
+        type: Boolean,
+        default: false
+    }
         
     },
     {timestamps:true}

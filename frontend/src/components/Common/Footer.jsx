@@ -7,7 +7,7 @@ import { FiPhoneCall } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <div className='w-full  h-[850px] md:h-[370px]  bg-white footer  border-b-0  border-t-gray-200' >
+    <div className='w-full md:text-[15px] text-[13px]    bg-white footer  border-b-0  border-t-gray-200' >
       <div className='grid grid-cols-1 md:grid-cols-4 px-5 py-3 pt-10' >
         <div className='pb-4 md:pb-0 md:pl-10'>
             <h1 className='text-lg font-semibold'>Newsletter</h1>
@@ -66,7 +66,7 @@ const Footer = () => {
 
         
       </div>
-      <div className='flex justify-center mt-12 px:4 pt-6 border-t border-gray-400'>
+      <div className='flex justify-center mt-12 px:4 p-5  border-t border-gray-400'>
         <p>© 2025, Veloura All Rights Reserved</p>
       </div>
     </div>

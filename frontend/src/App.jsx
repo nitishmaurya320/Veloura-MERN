@@ -23,6 +23,7 @@ import store from '../redux/store'
 import ProtectedRoute from './components/Common/ProtectedRoute'
 import Product from './components/Products/Product'
 import WishList from './pages/WishList'
+import { OtpPage } from './pages/OtpPage'
 
   
 
@@ -52,6 +53,7 @@ const App = () => {
      <Route path="my-orders" element={<MyOrders margin={100} />} />
      <Route path="/product/:id" element={<Product />}></Route>
      <Route path="/mywishlist" element={<WishList/>}></Route>
+     <Route path="/verify-otp" element={<OtpPage/>}></Route>
       </Route>
       
       <Route path="/admin" element={<ProtectedRoute role="admin"><AdminLayout/></ProtectedRoute>}>

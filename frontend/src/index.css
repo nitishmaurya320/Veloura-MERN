@@ -7,9 +7,9 @@
 
 .userlayout{
    font-family: "Inter", sans-serif;
-  width:100vw;
-      border:2px solid red;
-   
+  /* width:100vw; */
+      border:1px solid red;
+   height: 100%;
 }
 
 

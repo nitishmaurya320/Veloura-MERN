@@ -78,7 +78,7 @@ const CollectionPage = ({id,setId}) => {
                         <SortOptions/>
                     </div>
             </div>
-            <ProductsGrid setShowFooter={setShowFooter} id={id} setId={setId}  products={products} loading={loading} error={error}/>
+            <ProductsGrid cols={5} setShowFooter={setShowFooter} id={id} setId={setId}  products={products} loading={loading} error={error}/>
             <div ref={footerTriggerRef} className="h-1 w-full"></div>
         </div>
     </section>

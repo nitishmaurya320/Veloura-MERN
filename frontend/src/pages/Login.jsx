@@ -84,7 +84,7 @@ const Login = () => {
           {/* Signup Link */}
           <p className="text-center text-gray-500 mt-4">
             Don't have an account?{" "}
-            <Link to={`/signup?redirect=${encodeURIComponent(redirect)}`} className="text-[#c8a261] font-medium hover:underline">
+            <Link onClick={()=>window.scrollTo({top:0})} to={`/signup?redirect=${encodeURIComponent(redirect)}`} className="text-[#c8a261] font-medium hover:underline">
               Sign Up
             </Link>
           </p>

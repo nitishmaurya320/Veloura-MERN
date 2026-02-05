@@ -17,7 +17,7 @@ const Profile = () => {
       navigate("/login")
     }
   },[user,navigate])
-
+  
   const handleLogout=()=>{
     dispatch(logout())
     dispatch(clearCart())

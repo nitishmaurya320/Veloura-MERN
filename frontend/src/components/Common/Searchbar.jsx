@@ -19,7 +19,7 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="hidden md:flex w-[420px]">
+    <div className="hidden md:flex max-w-[420px]">
       <form
         onSubmit={handleSearch}
         className="relative w-full"
