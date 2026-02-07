@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import login from "../assets/login.png";
-import { registerUser } from "../../redux/slices/authSlice";
+import { registerUser, resetRegisterState } from "../../redux/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { mergeCart } from "../../redux/slices/cartSlice";
 import { useEffect } from "react";
@@ -20,8 +20,8 @@ const Signup = () => {
   );
 
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
-  console.log(`registersuccses ${registerSuccess}`);
-  console.log(`loading ${loading}`);
+  // console.log(`registersuccses ${registerSuccess}`);
+  // console.log(`loading ${loading}`);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const Signup = () => {
       navigate(
         `/verify-otp?redirect=${encodeURIComponent(redirect)}&identifier=${encodeURIComponent(email)}`,
       );
+      dispatch(resetRegisterState());
     }
   }, [registerSuccess, navigate, email]);
 

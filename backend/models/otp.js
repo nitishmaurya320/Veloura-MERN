@@ -1,26 +1,27 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose");
 
+const otpSchema = new mongoose.Schema(
+  {
+    identifier: {
+      type: String,
+      required: true,
+      index: true,
+      unique: true,
+    },
+    otp: {
+      type: String,
+    },
+    expiresAt: {
+      type: Date,
+      required: true,
+      index: { expires: 0 },
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true },
+);
 
-const otpSchema=new mongoose.Schema({
-    identifier:{
-        type:String,
-        required:true,
-        index:true,
-        unique:true
-    },
-    otp:{
-        type:String,
-        
-    },
-    expiresAt:{
-        type:Date,
-        required:true,
-        index:{expires:0}
-    },
-    isVerified:{
-        type:Boolean,
-        default:false
-    }
-},{timestamps:true})
-
-module.exports = mongoose.model("OTP", otpSchema)
+module.exports = mongoose.model("OTP", otpSchema);

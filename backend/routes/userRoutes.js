@@ -25,13 +25,10 @@ router.post("/register", async (req, res) => {
       } else {
         const updateData = {};
 
-        if (name) updateData.name = name;
-        if (password) updateData.password = password; // plain value as you asked
+        if (name) user.name = name;
+        if (password) user.password = password; // plain value as you asked
 
-        // Only update if there is something to update
-        if (Object.keys(updateData).length > 0) {
-          await User.findOneAndUpdate({ email }, updateData);
-        }
+        await user.save();
       }
     } else {
       // If user doesn't exist, you can create a new one if needed
@@ -46,19 +43,21 @@ router.post("/register", async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     await sendOtpEmail(email, otp);
     console.log(otp);
-    await OTP.findOneAndUpdate(
-      { identifier: email }, // 🔍 search condition
+    const otpDoc = await OTP.findOneAndUpdate(
+      { identifier: email },
       {
         otp,
         isVerified: false,
         expiresAt: new Date(Date.now() + 10 * 60 * 1000),
       },
-      {
-        upsert: true, // ⭐ THIS is the magic
-        new: true,
-      },
+      { upsert: true, new: true },
     );
-    res.status(201).json({ message: "User registered. OTP sent", email });
+
+    res.status(201).json({
+      message: "User registered. OTP sent",
+      email,
+      expiry: otpDoc.expiresAt.getTime(), // 🔥 THIS WAS MISSING
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Server error" });
@@ -114,6 +113,23 @@ router.post("/verify-otp", async (req, res) => {
     );
   } catch (error) {
     res.status(500).json({ message: "server error" });
+  }
+});
+router.get("/expiry", async (req, res) => {
+  const { identifier } = req.query;
+
+  try {
+    const otpRecord = await OTP.findOne({ identifier });
+
+    if (!otpRecord) {
+      return res.status(200).json({ expiry: 0 });
+    }
+
+    res.status(200).json({
+      expiry: otpRecord.expiresAt.getTime(),
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
   }
 });
 

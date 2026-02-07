@@ -122,6 +122,11 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    resetRegisterState: (state) => {
+      state.registerSuccess = false;
+      state.loading = false;
+      state.error = null;
+    },
     resetAuthState: (state) => {
       state.user = null;
       state.guestId = `guest_${new Date().getTime()}`;
@@ -138,6 +143,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
         state.guestId = `guest_${Date.now()}`;
@@ -201,5 +207,10 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, generateNewGuestId, resetAuthState } = authSlice.actions;
+export const {
+  logout,
+  generateNewGuestId,
+  resetAuthState,
+  resetRegisterState,
+} = authSlice.actions;
 export default authSlice.reducer;
