@@ -18,7 +18,10 @@ const Signup = () => {
   const { registerSuccess, loading, error } = useSelector(
     (state) => state.auth,
   );
+
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
+  console.log(`registersuccses ${registerSuccess}`);
+  console.log(`loading ${loading}`);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +29,6 @@ const Signup = () => {
       toast.error("The password must contain at least 6 characters,");
       return;
     }
-    console.log(error);
 
     dispatch(registerUser({ name, email, password }));
   };
@@ -34,7 +36,6 @@ const Signup = () => {
     if (registerSuccess) {
       navigate(
         `/verify-otp?redirect=${encodeURIComponent(redirect)}&identifier=${encodeURIComponent(email)}`,
-        {},
       );
     }
   }, [registerSuccess, navigate, email]);

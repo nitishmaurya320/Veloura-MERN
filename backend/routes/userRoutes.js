@@ -41,7 +41,6 @@ router.post("/register", async (req, res) => {
         password, // fallback if no password
       });
       await user.save();
-      res.json({ message: "User created successfully" });
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -59,8 +58,10 @@ router.post("/register", async (req, res) => {
         new: true,
       },
     );
+    res.status(201).json({ message: "User registered. OTP sent", email });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
