@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchProductsByFilter, setFilters } from "../../../redux/slices/productsSlice";
+import {
+  fetchProductsByFilter,
+  setFilters,
+} from "../../../redux/slices/productsSlice";
 
 const Searchbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,10 +23,7 @@ const Searchbar = () => {
 
   return (
     <div className="hidden md:flex max-w-[420px]">
-      <form
-        onSubmit={handleSearch}
-        className="relative w-full"
-      >
+      <form onSubmit={handleSearch} className="relative w-full">
         <input
           type="text"
           placeholder="Search for products..."
@@ -37,8 +37,8 @@ const Searchbar = () => {
             border border-gray-300
             outline-none
             text-sm
-            focus:border-black
-            focus:ring-1 focus:ring-black
+            focus:border-[#9B2A90]
+            focus:ring-1 focus:ring-[#9B2A90]
             transition
           "
         />
@@ -49,13 +49,13 @@ const Searchbar = () => {
             absolute right-1 top-1/2 -translate-y-1/2
             w-[36px] h-[36px]
             rounded-full
-            bg-yellow-400
+            bg-[#9B2A90]
             flex items-center justify-center
-            hover:bg-yellow-500
+            hover:bg-[#7E1F75]
             transition
           "
         >
-          <IoIosSearch className="text-xl text-black" />
+          <IoIosSearch className="text-xl text-white" />
         </button>
       </form>
     </div>

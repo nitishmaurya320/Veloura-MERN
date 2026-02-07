@@ -109,7 +109,7 @@ const Checkout = ({ setIsPaymentDone, isPaymentDone }) => {
         </div>
       )}
       {/* {left} */}
-      <div className="md:flex-row md:text-[15px] text-[12px]  flex-wrap  flex  justify-center md:gap-6   p-5 md:h-full  items-center">
+      <div className="md:flex-row md:text-[15px] text-[13px]  flex-wrap  flex  justify-center md:gap-6   p-5 md:h-full  items-center">
         <div className="md:w-[40%] w-full md:order-0 order-1  m-0 max-w-[500px] ">
           <h2 className="md:text-[19px] text-[16px] font-bold">CHECKOUT</h2>
           <p className="md:text-[17px] text-[14px] font-bold">
@@ -224,7 +224,7 @@ const Checkout = ({ setIsPaymentDone, isPaymentDone }) => {
             </div>
             <div className=" items-center justify-center mt-2    ">
               {!checkoutId ? (
-                <button className="bg-black hover:bg-gray-800 text-white px-2 py-2 rounded-md">
+                <button className="bg-[#9B2A90] hover:bg-[#7E1F75] text-white px-2 py-2 rounded-md">
                   Continue to Payment
                 </button>
               ) : (

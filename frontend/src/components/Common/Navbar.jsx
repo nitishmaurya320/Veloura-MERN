@@ -35,12 +35,12 @@ const Navbar = () => {
   return (
     <>
       {/* <div className="fixed border  w-screen h-screen z-1000 bg-gray-800 opacity-90 text-5xl" >hello</div> */}
-      <div className=" shadow-md fixed  top-0 z-1000 w-full  md:h-[100px] h-[80px]   flex justify-between items-center bg-[#11233b] px-3 md:px-5">
+      <div className=" shadow-md fixed  top-0 z-1000 w-full  md:h-[100px] h-[80px]   flex justify-between items-center bg-white px-3 md:px-5">
         <HiMiniBars3
-          className="md:text-2xl text-[20px] text-white  md:hidden ml-1 "
+          className="md:text-2xl text-[20px] text-black  md:hidden ml-1 "
           onClick={handleMenubar}
         />
-        <div className="w-[150px]  h-[40%] mx-5  md:w-[250px] md:h-[60%] ">
+        <div className="w-[150px]  h-[50%] mx-5  md:w-[250px] md:h-[70%] ">
           <Link to="/">
             <img
               src="/logo.png"
@@ -62,7 +62,7 @@ const Navbar = () => {
                     onClick={() => {
                       window.scrollTo({ top: 0 });
                     }}
-                    className="text-white menu text-2xl hover:text-yellow-200"
+                    className="text-black menu text-2xl hover:text-[#9B2A90]"
                   >
                     {item.name}
                   </li>
@@ -87,16 +87,16 @@ const Navbar = () => {
           <Link to="/profile">
             <RiAccountCircleLine
               onClick={() => window.scrollTo({ top: 0 })}
-              className="md:text-2xl text-[21px] text-white"
+              className="md:text-2xl text-[21px] text-black"
             />
           </Link>
           {user && (
             <Link to="/mywishlist">
-              <FiHeart className="md:text-2xl text-[21px] text-white " />
+              <FiHeart className="md:text-2xl text-[21px] text-black " />
             </Link>
           )}
           <div className="relative " onClick={() => setCartDrawer(true)}>
-            <HiOutlineShoppingBag className="md:text-2xl text-[21px] text-white" />
+            <HiOutlineShoppingBag className="md:text-2xl text-[21px] text-black" />
             {cartItemCount > 0 && (
               <div className="absolute top-[70%] right-[-10%]  md:h-[17px] md:w-[17px] w-[14px] h-[14px] flex justify-center items-center bg-red-500  rounded-full cursor-pointer">
                 <span className="  md:text-[15px] text-[12px]   text-white   ">

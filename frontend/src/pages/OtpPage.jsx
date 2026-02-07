@@ -46,10 +46,10 @@ export const OtpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 md:text-[15px] text-[13px]">
+    <div className=" mt-[150px]  flex items-center justify-center  px-4 md:text-[15px] text-[13px]">
       <div className="max-w-md w-full bg-white p-8 md:p-10 rounded-2xl shadow-xl flex flex-col gap-6">
         {/* Brand */}
-        <div className="text-3xl font-extrabold text-[#c8a261] text-center">
+        <div className="text-3xl font-extrabold text-[#9B2A90] text-center">
           Veloura
         </div>
 
@@ -69,7 +69,7 @@ export const OtpPage = () => {
           maxLength={6}
           value={otp}
           onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
-          className="w-full text-center text-lg tracking-widest border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#c8a261]"
+          className="w-full text-center text-lg tracking-widest border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#9B2A90]"
           placeholder="••••••"
         />
 
@@ -86,7 +86,7 @@ export const OtpPage = () => {
         <button
           onClick={submitHandler}
           disabled={loading}
-          className="w-full py-3 rounded-lg text-white font-semibold transition disabled:opacity-60 bg-[#c8a261] hover:bg-[#b38f4f]"
+          className="w-full py-3 rounded-lg text-white font-semibold transition disabled:opacity-60 bg-[#9B2A90] hover:bg-[#7E1F75]"
         >
           {loading ? "Verifying..." : "Verify OTP"}
         </button>
@@ -95,7 +95,7 @@ export const OtpPage = () => {
         <div className="text-center">
           <Link
             to={`/login?redirect=${encodeURIComponent(redirect)}`}
-            className="text-[#c8a261] font-medium hover:underline"
+            className="text-[#9B2A90] font-medium hover:underline"
           >
             Back to Login
           </Link>

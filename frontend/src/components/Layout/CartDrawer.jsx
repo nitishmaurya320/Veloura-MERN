@@ -24,34 +24,42 @@ const CartDrawer = ({ isopen, setCartDrawer }) => {
       setCartDrawer(false);
     }, 200);
   };
+
   return (
     <>
       <div
-        className={`z-50 bg-white fixed top-0  h-full  duration-300 transition-transform right-0 transform flex flex-col  w-3/4 sm:w-1/2 md:w-[30rem] ${isopen ? "translate-x-0" : "translate-x-full"}`}
+        className={`z-50 bg-white shadow-2xl fixed top-0 h-full duration-300 transition-transform right-0 transform flex flex-col w-3/4 sm:w-1/2 md:w-[30rem] ${
+          isopen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
-        <div className=" flex justify-end">
-          <button className="p-2" onClick={() => setCartDrawer(false)}>
-            <IoCloseSharp className="cursor-pointer text-3xl" />
+        {/* Close Button */}
+        <div className="flex justify-end p-2">
+          <button onClick={() => setCartDrawer(false)}>
+            <IoCloseSharp className="cursor-pointer text-3xl text-gray-700 hover:text-[#9B2A90] transition-colors" />
           </button>
         </div>
+
+        {/* Cart Content */}
         <div className="flex-grow p-4 overflow-y-auto">
-          <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+            Your Cart
+          </h2>
           {cart && cart?.products?.length > 0 ? (
             <Cartcontents cart={cart} userId={userId} guestId={guestId} />
           ) : (
-            <p>Your cart is empty</p>
+            <p className="text-gray-500">Your cart is empty</p>
           )}
         </div>
-        <div className="p-4 sticky bottom-0 w-">
+
+        {/* Checkout Button */}
+        <div className="p-4 sticky bottom-0 w-full bg-white">
           {cart && cart?.products?.length > 0 && (
-            <>
-              <button
-                onClick={handleCheckout}
-                className="w-full px-2 border border-black hover:bg-gray-800 bg-black rounded-sm  text-white text-2xl"
-              >
-                Checkout
-              </button>
-            </>
+            <button
+              onClick={handleCheckout}
+              className="w-full py-3 px-4 rounded-lg bg-[#9B2A90] hover:bg-[#7E1F75] text-white font-semibold text-lg shadow-md transition-all"
+            >
+              Checkout
+            </button>
           )}
         </div>
       </div>

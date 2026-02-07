@@ -20,7 +20,7 @@ const Reviews = ({
   const handleEdit = () => {
     setIsEditing(true);
     const review = reviews.find(
-      (review) => review.userId?._id === userId
+      (review) => review.userId?._id === userId,
     )?.comment;
     setComment(review || "");
   };
@@ -60,7 +60,7 @@ const Reviews = ({
                 setComment("");
                 setRating(0);
               }}
-              className="bg-green-500 text-white px-4 py-1.5 rounded-md hover:bg-green-600 transition"
+              className="bg-[#9B2A90] hover:bg-[#7E1F75] text-white px-4 py-1.5 rounded-md  transition"
             >
               {isEditing ? "Update Review" : "Submit Review"}
             </button>
@@ -90,7 +90,9 @@ const Reviews = ({
                 {review?.userId?._id === userId && (
                   <div className="relative">
                     <button
-                      onClick={() => setOpen(open === review._id ? null : review._id)}
+                      onClick={() =>
+                        setOpen(open === review._id ? null : review._id)
+                      }
                       className="p-1 rounded hover:bg-gray-100"
                     >
                       <BiDotsVerticalRounded size={18} />

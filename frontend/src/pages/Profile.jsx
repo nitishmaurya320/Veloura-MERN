@@ -1,13 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MyOrders from "./MyOrders";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import {
-  logout,
-  logoutUser,
-  resetAuthState,
-} from "../../redux/slices/authSlice";
+import { logoutUser, resetAuthState } from "../../redux/slices/authSlice";
 import { clearCart } from "../../redux/slices/cartSlice";
 
 const Profile = () => {
@@ -27,21 +22,23 @@ const Profile = () => {
     dispatch(clearCart());
     navigate("/login");
   };
+
   return (
-    <div className="flex flex-col w-full md:flex-row h-full justify-center items-center md:items-start md:h-[500px]   mt-[100px] ">
-      <div className="w-[30%]  border-red-400 flex  justify-center items-top mt-5 ">
-        <div className=" h-[40%] justify-center flex flex-col items-center ">
-          <h1 className="text-2xl font-bold ">{user?.name}</h1>
-          <p className="text-1xl text-center">{user?.email}</p>
-          <button
-            onClick={handleLogout}
-            class="bg-red-500 text-center mt-2 hover:bg-red-600 text-white font-semibold py-1 px-4 rounded-xl shadow-md transition-all duration-300 ease-in-out"
-          >
-            Logout
-          </button>
-        </div>
+    <div className="flex flex-col md:flex-row w-full mt-[100px] justify-center items-start gap-10 px-4 md:px-16">
+      {/* Profile Info */}
+      <div className="md:w-[30%] w-full rounded-2xl  p-6 flex flex-col items-center gap-4">
+        <h1 className="text-2xl font-bold text-gray-800">{user?.name}</h1>
+        <p className="text-gray-600 text-center">{user?.email}</p>
+        <button
+          onClick={handleLogout}
+          className="mt-4 bg-[#9B2A90] hover:bg-[#7E1F75] text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-300 ease-in-out"
+        >
+          Logout
+        </button>
       </div>
-      <div className="md:w-[70%] h-full w-full">
+
+      {/* Orders Section */}
+      <div className="md:w-[70%] w-full">
         <MyOrders />
       </div>
     </div>

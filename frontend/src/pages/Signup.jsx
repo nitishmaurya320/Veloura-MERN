@@ -45,15 +45,15 @@ const Signup = () => {
   }, [registerSuccess, navigate, email, redirect, dispatch]);
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row bg-gray-50 md:text-[15px] text-[13px]">
+    <div className="w-full mt-[100px] flex flex-col md:flex-row bg-gray-50 md:text-[15px] text-[13px]">
       {/* Form Section */}
-      <div className="w-full md:w-1/2 flex justify-center items-center p-6 md:p-16">
+      <div className="w-full flex justify-center items-center p-6 md:p-16">
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-md bg-white p-8 md:p-10 rounded-2xl shadow-xl flex flex-col gap-6"
         >
           {/* Brand */}
-          <div className="text-3xl font-extrabold text-[#c8a261] text-center">
+          <div className="text-3xl font-extrabold text-[#9B2A90] text-center">
             Veloura
           </div>
           <p className="text-center text-gray-500">Create your account</p>
@@ -66,7 +66,7 @@ const Signup = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c8a261]"
+              className="p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#9B2A90]"
             />
           </div>
 
@@ -78,7 +78,7 @@ const Signup = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c8a261]"
+              className="p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#9B2A90]"
             />
           </div>
 
@@ -90,7 +90,7 @@ const Signup = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create a password"
-              className="p-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c8a261]"
+              className="p-3 pr-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#9B2A90]"
             />
             <button
               type="button"
@@ -108,7 +108,7 @@ const Signup = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-black hover:bg-gray-800 text-white font-semibold rounded-lg transition disabled:opacity-60"
+            className="w-full py-3 bg-[#9B2A90] hover:bg-[#7E1F75] text-white font-semibold rounded-lg transition disabled:opacity-60"
           >
             {loading ? "Creating account..." : "Sign Up"}
           </button>
@@ -118,18 +118,12 @@ const Signup = () => {
             Already have an account?{" "}
             <Link
               to={`/login?redirect=${encodeURIComponent(redirect)}`}
-              className="text-[#c8a261] font-medium hover:underline"
+              className="text-[#9B2A90] font-medium hover:underline"
             >
               Login
             </Link>
           </p>
         </form>
-      </div>
-
-      {/* Image Section */}
-      <div className="hidden md:block w-1/2 relative">
-        <img src={login} alt="Signup" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
       </div>
     </div>
   );
