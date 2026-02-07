@@ -52,9 +52,7 @@ const Product = () => {
                     
                     
                   },{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("userToken")}`
-                }
+                withCredentials:true
             });
                   setIsEditing(false); // stop editing after saving
                 } else {
@@ -66,9 +64,7 @@ const Product = () => {
                     
                     
                   },{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("userToken")}`
-                }
+                withCredentials:true
             });
                 }
 

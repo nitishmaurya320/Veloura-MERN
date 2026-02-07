@@ -5,11 +5,12 @@ const otpSchema=new mongoose.Schema({
     identifier:{
         type:String,
         required:true,
-        index:true
+        index:true,
+        unique:true
     },
     otp:{
         type:String,
-        unique:true
+        
     },
     expiresAt:{
         type:Date,

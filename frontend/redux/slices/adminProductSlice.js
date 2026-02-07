@@ -7,9 +7,7 @@ import axios from 'axios';
 export const fetchAdminProducts = createAsyncThunk("adminProducts/fetchAdminProducts", async () => {
     
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/products`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`
-            }
+            withCredentials:true
         });
         return response.data;
   
@@ -19,9 +17,7 @@ export const fetchAdminProducts = createAsyncThunk("adminProducts/fetchAdminProd
 export const createProduct = createAsyncThunk("adminProducts/createProduct", async (productData) => {    
    
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/products`, productData, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`
-            }
+            withCredentials:true
         });
         return response.data;
    
@@ -31,9 +27,7 @@ export const createProduct = createAsyncThunk("adminProducts/createProduct", asy
 export const updateProduct = createAsyncThunk("adminProducts/updateProduct", async ({id,productData}) => {
     
         const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/admin/products/${id}`, productData, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`
-            }
+            withCredentials:true
         });
         return response.data;
     
@@ -43,9 +37,7 @@ export const updateProduct = createAsyncThunk("adminProducts/updateProduct", asy
 export const deleteProduct = createAsyncThunk("adminProducts/deleteProduct", async (id) => {
     
         await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${id}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`
-            }
+            withCredentials:true
         });
         return id;
     

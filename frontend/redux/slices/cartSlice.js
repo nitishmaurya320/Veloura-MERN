@@ -89,9 +89,7 @@ export const mergeCart = createAsyncThunk("cart/mergeCart", async ({ guestId,use
             
             guestId,user
         },{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("userToken")}`
-            }   
+            withCredentials:true   
         });
         return response.data;
     } catch (error) {
