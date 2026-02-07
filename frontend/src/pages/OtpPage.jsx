@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { verifyUser } from "../../redux/slices/authSlice";
 import { toast } from "sonner";
 import { mergeCart } from "../../redux/slices/cartSlice";
@@ -18,12 +18,12 @@ export const OtpPage = () => {
   const identifier = new URLSearchParams(location.search).get("identifier");
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
   const isCheckoutRedirect = redirect.includes("checkout");
+
   useEffect(() => {
     if (!identifier) {
-      // If identifier is missing, go back to signup or login
-      navigate(`/signup?redirect=${encodeURIComponent(redirect)}`); // or "/login"
+      navigate(`/signup?redirect=${encodeURIComponent(redirect)}`);
     }
-  }, [identifier, navigate]);
+  }, [identifier, navigate, redirect]);
 
   useEffect(() => {
     if (user) {
@@ -37,57 +37,68 @@ export const OtpPage = () => {
     }
   }, [user, guestId, cart, navigate, isCheckoutRedirect, dispatch]);
 
-  const submitHandler = async () => {
+  const submitHandler = () => {
     if (otp.length !== 6) {
       toast.error("OTP must be 6 digits");
       return;
     }
     dispatch(verifyUser({ otp, identifier }));
-
-    if (user) {
-      navigate(`/login?redirect=${encodeURIComponent(redirect)}`);
-    } else console.log(error);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Verify Your OTP
-        </h2>
-        <p className="text-center text-gray-500 mb-6">
-          Enter the 6-digit OTP sent to your email.
-        </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 md:text-[15px] text-[13px]">
+      <div className="max-w-md w-full bg-white p-8 md:p-10 rounded-2xl shadow-xl flex flex-col gap-6">
+        {/* Brand */}
+        <div className="text-3xl font-extrabold text-[#c8a261] text-center">
+          Veloura
+        </div>
 
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-gray-800">
+            Verify your OTP
+          </h2>
+          <p className="text-gray-500 mt-1">
+            Enter the 6-digit code sent to your email
+          </p>
+        </div>
+
+        {/* OTP Input */}
         <input
           type="text"
+          inputMode="numeric"
           maxLength={6}
           value={otp}
-          onChange={(e) => setOtp(e.target.value)}
-          className="w-full text-center text-lg border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 mb-6"
-          placeholder="Enter OTP"
+          onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
+          className="w-full text-center text-lg tracking-widest border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#c8a261]"
+          placeholder="••••••"
         />
-        {error && <p>{error}</p>}
+
+        {/* Error */}
+        {error && <p className="text-red-500 text-center">{error}</p>}
+
+        {/* OTP Timer */}
         <OTPTimer
           identifier={identifier}
           onExpire={() => console.log("OTP expired")}
         />
+
+        {/* Verify Button */}
         <button
           onClick={submitHandler}
           disabled={loading}
-          className={`w-full py-3 rounded-lg text-white font-semibold transition-all ${
-            loading
-              ? "bg-indigo-300 cursor-not-allowed"
-              : "bg-indigo-600 hover:bg-indigo-700"
-          }`}
+          className="w-full py-3 rounded-lg text-white font-semibold transition disabled:opacity-60 bg-[#c8a261] hover:bg-[#b38f4f]"
         >
           {loading ? "Verifying..." : "Verify OTP"}
         </button>
 
-        <div className="mt-4 text-center">
-          <button className="text-sm text-indigo-600 hover:underline">
+        {/* Back to Login */}
+        <div className="text-center">
+          <Link
+            to={`/login?redirect=${encodeURIComponent(redirect)}`}
+            className="text-[#c8a261] font-medium hover:underline"
+          >
             Back to Login
-          </button>
+          </Link>
         </div>
       </div>
     </div>
