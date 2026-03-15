@@ -86,65 +86,25 @@ admin and user roles, enabling efficient product management and a smooth shoppin
 </ul>
 
 <hr>
-
-<h2>📁 Project Structure</h2>
-
-<pre>
-veloura
-│
-├── client        # React frontend
-├── server        # Express backend
-├── controllers   # Business logic
-├── models        # MongoDB schemas
-├── routes        # API routes
-├── middleware    # Authentication & validation
-└── README.md
-</pre>
-
 <hr>
 
-<h2>⚙️ Installation</h2>
+<h2>📸 Screenshots</h2>
 
-<h3>Clone the Repository</h3>
+<p align="center">
+<img src="screenshots/11.png" width="800"/>
+</p>
 
-<pre>
-git clone https://github.com/yourusername/veloura.git
-</pre>
+<p align="center">
+<img src="screenshots/12.png" width="800"/>
+</p>
 
-<h3>Backend Setup</h3>
+<p align="center">
+<img src="screenshots/13.png" width="800"/>
+</p>
 
-<pre>
-cd server
-npm install
-npm run dev
-</pre>
-
-<h3>Frontend Setup</h3>
-
-<pre>
-cd client
-npm install
-npm start
-</pre>
-
-<hr>
-
-<h2>🌍 Environment Variables</h2>
-
-<p>Create a <b>.env</b> file inside the server folder:</p>
-
-<pre>
-PORT=5000
-MONGO_URI=your_mongodb_connection
-
-JWT_SECRET=your_secret
-
-GOOGLE_CLIENT_ID=your_client_id
-GOOGLE_CLIENT_SECRET=your_secret
-
-RAZORPAY_KEY_ID=your_key
-RAZORPAY_SECRET=your_secret
-</pre>
+<p align="center">
+<img src="screenshots/14.png" width="800"/>
+</p>
 
 <hr>
 
