@@ -90,19 +90,19 @@ admin and user roles, enabling efficient product management and a smooth shoppin
 
 <h2>📸 Screenshots</h2>
 
-<p align="center">
+<p align="left">
 <img src="screenshots/11.png" width="800"/>
 </p>
 
-<p align="center">
+<p align="left">
 <img src="screenshots/12.png" width="800"/>
 </p>
 
-<p align="center">
+<p align="left">
 <img src="screenshots/13.png" width="800"/>
 </p>
 
-<p align="center">
+<p align="left">
 <img src="screenshots/14.png" width="800"/>
 </p>
 
