@@ -40,7 +40,7 @@ const ProductDetails = ({ productId }) => {
     }
 
     setIsButtonDisabled(false);
-
+    console.log(user);
     dispatch(
       addToCart({
         productId: productFetchId,

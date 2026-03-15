@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import login from "../assets/login.png";
 import { loginUser } from "../../redux/slices/authSlice";
-import { mergeCart } from "../../redux/slices/cartSlice";
+import { fetchCart, mergeCart } from "../../redux/slices/cartSlice";
 import GoogleLoginBtn from "../components/Buttons/GoogleLoginBtn";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -25,6 +25,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
+      dispatch(fetchCart({ guestId, userId: user._id }));
       if (cart?.products.length > 0 && guestId) {
         dispatch(mergeCart({ guestId, user })).then(() => {
           navigate(isCheckoutRedirect ? "/checkout" : "/");
@@ -33,7 +34,7 @@ const Login = () => {
         navigate(isCheckoutRedirect ? "/checkout" : "/");
       }
     }
-  }, [user, guestId, cart, navigate, isCheckoutRedirect, dispatch]);
+  }, [user, guestId, navigate, isCheckoutRedirect, dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
